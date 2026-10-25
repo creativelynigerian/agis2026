@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="50%" stop-color="#112240"/>
+      <stop offset="100%" stop-color="#070d19"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6d365"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#aa771c"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="sunburst" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#112240" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)"/>
+  <rect width="800" height="600" fill="url(#sunburst)"/>
+  
+  <!-- Subtle tech grid -->
+  <g stroke="rgba(212, 175, 55, 0.08)" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="160" y1="0" x2="160" y2="600"/>
+    <line x1="320" y1="0" x2="320" y2="600"/>
+    <line x1="480" y1="0" x2="480" y2="600"/>
+    <line x1="640" y1="0" x2="640" y2="600"/>
+  </g>
+  
+  <!-- Decorative Frame -->
+  <rect x="25" y="25" width="750" height="550" rx="16" fill="none" stroke="rgba(212, 175, 55, 0.3)" stroke-width="2"/>
+  <rect x="35" y="35" width="730" height="530" rx="12" fill="none" stroke="rgba(212, 175, 55, 0.15)" stroke-width="1"/>
+  
+  <!-- Center Emblem (Oil Horn / Drop & Cross) -->
+  <g transform="translate(400, 160)">
+    <!-- Outer Glow Circle -->
+    <circle r="70" fill="rgba(212, 175, 55, 0.1)" stroke="url(#goldGrad)" stroke-width="2"/>
+    <circle r="85" fill="none" stroke="rgba(212, 175, 55, 0.2)" stroke-dasharray="6,6" stroke-width="1.5"/>
+    
+    <!-- Anointing Oil Drop Motif -->
+    <path d="M 0,-45 C -25,-10 -35,15 -35,30 C -35,50 -18,65 0,65 C 18,65 35,50 35,30 C 35,15 25,-10 0,-45 Z" fill="url(#goldGrad)"/>
+    
+    <!-- Inner Cross -->
+    <path d="M -3,0 L 3,0 L 3,38 L -3,38 Z M -14,10 L 14,10 L 14,16 L -14,16 Z" fill="#0a192f"/>
+  </g>
+  
+  <!-- Typography -->
+  <text x="400" y="280" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="16" letter-spacing="4" fill="#d4af37" font-weight="600">ANNUAL YOUTH EMPOWERMENT SUMMIT</text>
+  
+  <text x="400" y="335" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="44" font-weight="900" fill="#ffffff" letter-spacing="2">ACCELERATE</text>
+  
+  <text x="400" y="375" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="url(#goldGrad)" letter-spacing="1">GLOBAL IMPACT SUMMIT 2026</text>
+  
+  <!-- Ribbon / Badge -->
+  <g transform="translate(250, 405)">
+    <rect width="300" height="38" rx="19" fill="rgba(212, 175, 55, 0.15)" stroke="#d4af37" stroke-width="1.5"/>
+    <text x="150" y="24" text-anchor="middle" font-family="'Inter', -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="2">THEME: FRESH OIL</text>
+  </g>
+  
+  <text x="400" y="475" text-anchor="middle" font-family="'Inter', -apple-system, sans-serif" font-size="16" font-style="italic" fill="#cbd5e1">“For Innovative Thinking”</text>
+  
+  <!-- Four Pillars Pills -->
+  <g transform="translate(130, 505)" font-family="'Inter', -apple-system, sans-serif" font-size="12" font-weight="600" fill="#e2e8f0">
+    <rect x="0" y="0" width="120" height="28" rx="14" fill="#1e293b" stroke="rgba(212, 175, 55, 0.4)"/>
+    <text x="60" y="18" text-anchor="middle">✝ Christ</text>
+    
+    <rect x="140" y="0" width="120" height="28" rx="14" fill="#1e293b" stroke="rgba(212, 175, 55, 0.4)"/>
+    <text x="200" y="18" text-anchor="middle">🛡 Character</text>
+    
+    <rect x="280" y="0" width="120" height="28" rx="14" fill="#1e293b" stroke="rgba(212, 175, 55, 0.4)"/>
+    <text x="340" y="18" text-anchor="middle">⚙ Competence</text>
+    
+    <rect x="420" y="0" width="120" height="28" rx="14" fill="#1e293b" stroke="rgba(212, 175, 55, 0.4)"/>
+    <text x="480" y="18" text-anchor="middle">🚀 Capacity</text>
+  </g>
+  
+  <!-- Footer line -->
+  <text x="400" y="565" text-anchor="middle" font-family="'Inter', -apple-system, sans-serif" font-size="11" fill="#94a3b8" letter-spacing="1">CCYI GLOBAL &amp; ACCESS CHAPEL • 27TH &amp; 28TH NOVEMBER 2026</text>
+</svg>

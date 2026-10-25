@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accelerate Global Impact Summit 2026 — FRESH OIL | Powered by CCYI Global & Access Chapel</title>
+  <meta name="description" content="Accelerate Global Impact Summit 2026 — FRESH OIL: For Innovative Thinking. An annual youth empowerment summit inspiring Christ, Character, Competence and Capacity. 27th–28th November 2026 at Access Chapel Auditorium, Ogun State.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/agis-logo.png">
+
+  <!-- Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons & Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="agis-topbar">
+    <strong>ACCELERATE GLOBAL IMPACT SUMMIT 2026</strong> &nbsp;|&nbsp; <em>Theme: FRESH OIL</em> &nbsp;|&nbsp; 27th–28th November 2026 &nbsp;|&nbsp; Access Chapel Auditorium, Ogun State
+  </div>
+
+  <!-- ===== PRELOADER ===== -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <img src="assets/agis-logo.png" alt="Accelerate Global Impact Summit 2026">
+      </div>
+      <p>ACCELERATE GLOBAL IMPACT SUMMIT</p>
+      <span class="preloader-theme">FRESH OIL</span>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo" aria-label="AGIS 2026 Home">
+        <div class="logo-img">
+          <img src="assets/agis-logo.png" alt="Accelerate Global Impact Summit 2026">
+        </div>
+        <div class="logo-text">
+          <h1>AGIS 2026</h1>
+          <span>Powered by CCYI Global &amp; Access Chapel</span>
+        </div>
+      </a>
+      <button id="menuBtn" class="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="navMenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="#about" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              About AGIS <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="#about">About AGIS</a></li>
+              <li><a href="#theme">Theme</a></li>
+              <li><a href="#pillars">Four Pillars</a></li>
+              <li><a href="#speakers">Speakers</a></li>
+              <li><a href="#program">Programme</a></li>
+              <li><a href="#venue">Venue</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://landing-page-agis26-6p8y59bl4-creativelynigerians-projects.vercel.app/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="nav-tech">
+              <i class="fas fa-laptop-code"></i> AGIS Tech Challenge
+            </a>
+          </li>
+          <li><a href="#register" class="nav-cta">Register for AGIS 2026</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-cross"></i>
+        <span>AGIS 2026 | Annual Youth Empowerment Summit</span>
+      </div>
+      <div class="hero-theme">
+        <span class="hero-theme-label">Theme</span>
+        <h2 class="hero-theme-title">FRESH OIL</h2>
+        <p class="hero-theme-sub">For Innovative Thinking</p>
+      </div>
+      <h1 class="hero-title">
+        ACCELERATE<br>
+        <span class="highlight">Global Impact Summit 2026</span>
+      </h1>
+      <p class="hero-subtitle">
+        A generation-focused platform designed to inspire young people to live for Christ, build strong character, develop competence and grow their capacity for meaningful impact. Join us on 27th &amp; 28th November 2026.
+      </p>
+      <div class="hero-buttons">
+        <a href="#register" class="btn btn-primary"><i class="fas fa-pen"></i> Register for AGIS 2026</a>
+        <a href="#program" class="btn btn-outline"><i class="fas fa-calendar-alt"></i> View Programme</a>
+      </div>
+      <div class="countdown" id="countdown" aria-label="Countdown to Summit">
+        <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT AGIS ===== -->
+  <section id="about" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Since 2011</span>
+        <h2 class="section-title">Accelerate Global Impact Summit</h2>
+        <p class="section-subtitle">Christ • Character • Competence • Capacity</p>
+      </div>
+      <div class="anniversary-grid">
+        <div class="anniversary-image">
+          <picture>
+            <source srcset="assets/creatively-nigerian.svg" type="image/svg+xml">
+            <img src="assets/creatively-nigerian.jpeg" alt="Accelerate Global Impact Summit" loading="lazy">
+          </picture>
+        </div>
+        <div class="anniversary-content">
+          <h3>Empowering Young People for Global Impact</h3>
+          <p>
+            Accelerate Global Impact Summit (AGIS) is an annual youth empowerment event designed to instill Christ, Character, Competence and Capacity in young people. Since its inception in 2011, AGIS has inspired and challenged loads of young people to discover purpose, develop their potential and make meaningful impact in their generation.
+          </p>
+          <p class="theme-note">
+            <strong>AGIS 2026 Theme:</strong> <span class="theme-highlight">FRESH OIL</span> — For Innovative Thinking. A fresh outpouring for a generation ready to think differently, create boldly, and lead with clarity.
+          </p>
+          <div class="info-cards">
+            <div class="info-card">
+              <i class="fas fa-calendar-alt"></i>
+              <div><h4>Dates</h4><p>27th &amp; 28th November 2026</p></div>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-clock"></i>
+              <div><h4>Focus</h4><p>Youth Empowerment &amp; Global Impact</p></div>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <div><h4>Location</h4><p>Access Chapel Auditorium, Ogun State</p></div>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-star"></i>
+              <div><h4>Powered By</h4><p>CCYI Global &amp; Access Chapel</p></div>
+            </div>
+          </div>
+          <a href="#register" class="btn btn-primary"><i class="fas fa-check-circle"></i> Register Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THEME ===== -->
+  <section id="theme" class="section section-theme">
+    <div class="container">
+      <div class="theme-block">
+        <span class="section-tag theme-tag">AGIS 2026 Theme</span>
+        <h2 class="theme-title">FRESH OIL</h2>
+        <p class="theme-subtitle">For Innovative Thinking</p>
+        <p class="theme-body">
+          Fresh oil speaks of newness, consecration and the anointing that fuels creative, purpose-driven living. At AGIS 2026, we gather a generation hungry for fresh insight — young people ready to think differently, build boldly and solve problems that matter. <em>Fresh Oil</em> is the invitation. <em>Innovative Thinking</em> is the outcome.
+        </p>
+        <div class="theme-verses">
+          <div class="theme-verse">
+            <p>“And thou shalt make it an oil of holy ointment... after the art of the apothecary.”</p>
+            <span>— Exodus 30:25</span>
+          </div>
+          <div class="theme-verse">
+            <p>“Behold, how good and how pleasant it is... like the precious ointment upon the head.”</p>
+            <span>— Psalm 133:1–2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOUR PILLARS ===== -->
+  <section id="pillars" class="section section-dark">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Our Foundation</span>
+        <h2 class="section-title">Four Pillars of AGIS</h2>
+        <p class="section-subtitle">Building young people from the inside out</p>
+      </div>
+      <div class="anniversary-content pillars-content">
+        <p class="pillars-intro">
+          AGIS is built around four foundational values that shape young people for purposeful living, leadership and positive influence. The summit combines spiritual formation with practical learning, technology, purpose discovery and capacity development.
+        </p>
+        <div class="info-cards">
+          <div class="info-card">
+            <i class="fas fa-cross"></i>
+            <div><h4>Christ</h4><p>Faith, spiritual growth and a life centred on Jesus Christ.</p></div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-shield-alt"></i>
+            <div><h4>Character</h4><p>Integrity, discipline, values and responsible leadership.</p></div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-hands-helping"></i>
+            <div><h4>Competence</h4><p>Skills, technology, confidence and the ability to create lasting impact.</p></div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-rocket"></i>
+            <div><h4>Capacity</h4><p>Growing the inner strength to sustain meaningful, long-term impact.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMME ===== -->
+  <section id="program" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">27th &amp; 28th November</span>
+        <h2 class="section-title">Two Days of Transformation</h2>
+        <p class="section-subtitle">Spiritual rejuvenation, educational technology, purpose and destiny discovery</p>
+      </div>
+      <div class="anniversary-grid">
+        <div class="anniversary-image">
+          <picture>
+            <source srcset="assets/creatively-nigerian.svg" type="image/svg+xml">
+            <img src="assets/creatively-nigerian.jpeg" alt="Accelerate Global Impact Summit 2026" loading="lazy">
+          </picture>
+        </div>
+        <div class="anniversary-content">
+          <h3>27th &amp; 28th November 2026</h3>
+          <p>
+            Two powerful days of inspiration, spiritual rejuvenation, practical technology conversations, purpose discovery and capacity building—designed to help young people move from potential to purposeful impact.
+          </p>
+          <div class="info-cards">
+            <div class="info-card">
+              <i class="fas fa-calendar-alt"></i>
+              <div><h4>Day 1 — Tech Summit</h4><p>Friday, 27th November 2026 · <span class="tag-price">₦5,000</span></p></div>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-clock"></i>
+              <div><h4>Day 2 — Grand Summit</h4><p>Saturday, 28th November 2026 · <span class="tag-free">FREE</span></p></div>
+            </div>
+            <div class="info-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <div><h4>Location</h4><p>Access Chapel Auditorium, Ogun State</p></div>
+            </div>
+          </div>
+          <a href="#register" class="btn btn-primary"><i class="fas fa-check-circle"></i> Register Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPEAKERS ===== -->
+  <section id="speakers" class="section section-dark">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Speakers &amp; Experts</span>
+        <h2 class="section-title">Speakers &amp; Tech Experts</h2>
+      </div>
+      <div class="ministers-grid">
+        <div class="minister-card featured">
+          <div class="minister-icon"><i class="fas fa-user-tie"></i></div>
+          <h3>Convener</h3>
+          <p>Kay Daniels</p>
+          <h5>Visionary, CCYI Global</h5>
+        </div>
+        <div class="minister-card">
+          <div class="minister-icon"><i class="fas fa-user-tie"></i></div>
+          <h3>Speaker</h3>
+          <p>Evang. Jeremiah Babatunde</p>
+          <h5>Youth President, PFN Sango Central Chapter Youth Wing</h5>
+        </div>
+        <div class="minister-card">
+          <div class="minister-icon"><i class="fas fa-user-tie"></i></div>
+          <h3>Speaker</h3>
+          <p>Pst Kenny Adeleye</p>
+          <h5>Founder &amp; Senior Pastor, Access Chapel</h5>
+        </div>
+        <div class="minister-card">
+          <div class="minister-icon"><i class="fas fa-user-graduate"></i></div>
+          <h3>Tech Expert</h3>
+          <p>Mr. Kayode Adeagbo</p>
+          <h5>Microsoft Global Community Regional Lead</h5>
+        </div>
+      </div>
+      <div class="section-header light section-header-spaced">
+        <p class="pillars-tagline">
+          Christ • Character • Competence • Capacity — The next generation starts with us.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VENUE ===== -->
+  <section id="venue" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Join Us</span>
+        <h2 class="section-title">Venue &amp; Contact</h2>
+      </div>
+      <div class="venue-grid">
+        <div class="venue-info">
+          <div class="venue-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h4>Address</h4>
+            <p>
+              Access Chapel Auditorium<br>
+              5, Isau Olorunfunmi Street,<br>
+              Ogun State, Nigeria.
+            </p>
+          </div>
+          <div class="venue-card">
+            <i class="fas fa-phone"></i>
+            <h4>Enquiries</h4>
+            <p>
+              <a href="tel:+2348035690386">0803 569 0386</a><br>
+              <a href="tel:+2348149537021">0814 953 7021</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AGIS TECH CHALLENGE PROMO ===== -->
+  <section id="tech-challenge" class="section section-tech">
+    <div class="container">
+      <div class="tech-promo">
+        <div class="tech-promo-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <div class="tech-promo-content">
+          <span class="section-tag theme-tag">Special Feature</span>
+          <h2 class="tech-promo-title">AGIS Tech Challenge</h2>
+          <p class="tech-promo-text">
+            The premier technology competition for secondary schools. Test knowledge in Google Apps, AI, Microsoft Office, HTML &amp; CSS. <strong>₦5,000 per student, minimum 5 students per school.</strong> Includes full LMS access and our AI study tutor.
+          </p>
+          <a href="https://landing-page-agis26-6p8y59bl4-creativelynigerians-projects.vercel.app/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary">
+            <i class="fas fa-external-link-alt"></i> Register Your School
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REGISTER ===== -->
+  <section id="register" class="section section-dark">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Be Part of the Movement</span>
+        <h2 class="section-title">Register for AGIS 2026</h2>
+        <p class="section-subtitle theme-subtitle-inline">Theme: <strong>FRESH OIL</strong> — For Innovative Thinking</p>
+      </div>
+
+      <form id="registerForm" class="register-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. John Doe" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 08012345678" required autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="event">Select Attendance Option <span class="req">*</span></label>
+            <select id="event" name="event" required>
+              <option value="">-- Choose Option --</option>
+              <option value="Friday, 27th November 2026">Friday, 27th November 2026 (Tech Summit - ₦5,000)</option>
+              <option value="Saturday, 28th November 2026">Saturday, 28th November 2026 (Grand Summit - Free)</option>
+              <option value="Both Days">Both Days (Friday Tech Summit ₦5,000 + Saturday Free)</option>
+              <option value="Volunteer / Partner">Volunteer / Partner (Free)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Event Cost Indicator -->
+        <div id="eventCostIndicator" class="event-cost-indicator hidden">
+          <span id="eventCostBadge" class="badge-price">Paid: ₦5,000</span>
+          <span id="eventCostText">Includes full access to Day 1 Tech Summit sessions & resources.</span>
+        </div>
+
+        <p class="form-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>Pricing Note:</strong> Friday (Tech Summit) is a paid masterclass event — <strong>₦5,000</strong>. Saturday is free and open to everyone.
+        </p>
+        <button type="submit" class="btn btn-primary btn-full">
+          <i class="fas fa-paper-plane"></i> Complete Registration
+        </button>
+      </form>
+
+      <div id="formSuccess" class="form-success hidden">
+        <div class="success-banner">
+          <i class="fas fa-check-circle"></i>
+          <h3>Registration Successful!</h3>
+          <p>Thank you for registering for Accelerate Global Impact Summit 2026. Your official digital receipt has been generated below.</p>
+        </div>
+
+        <!-- ===== RECEIPT ===== -->
+        <div id="receipt" class="receipt">
+          <div class="receipt-header">
+            <div class="receipt-logo-wrap">
+              <img src="assets/agis-logo.png" alt="AGIS 2026" class="receipt-logo">
+            </div>
+            <div class="receipt-header-text">
+              <h4>Accelerate Global Impact Summit 2026</h4>
+              <span>Theme: <strong>FRESH OIL</strong> — For Innovative Thinking</span>
+            </div>
+          </div>
+
+          <!-- Attendee hero -->
+          <div class="receipt-attendee">
+            <span class="receipt-attendee-label">Registered Attendee</span>
+            <h3 class="receipt-attendee-name" id="receiptName">—</h3>
+          </div>
+
+          <!-- Event badge -->
+          <div class="receipt-event-badge">
+            <span class="receipt-event-label">Attending</span>
+            <span class="receipt-event-value" id="receiptEvent">—</span>
+          </div>
+
+          <div class="receipt-body">
+            <div class="receipt-row">
+              <span class="receipt-label">Receipt No.</span>
+              <span class="receipt-value receipt-number" id="receiptNumber">—</span>
+            </div>
+            <div class="receipt-row">
+              <span class="receipt-label">Email</span>
+              <span class="receipt-value" id="receiptEmail">—</span>
+            </div>
+            <div class="receipt-row">
+              <span class="receipt-label">Phone</span>
+              <span class="receipt-value" id="receiptPhone">—</span>
+            </div>
+            <div class="receipt-row">
+              <span class="receipt-label">Issued</span>
+              <span class="receipt-value" id="receiptDate">—</span>
+            </div>
+            <div class="receipt-row">
+              <span class="receipt-label">Payment Status</span>
+              <span class="receipt-value" id="receiptStatus">—</span>
+            </div>
+          </div>
+
+          <div class="receipt-footer">
+            <p><i class="fas fa-info-circle"></i> Please keep this receipt. Present it at the entrance on the day(s) you selected.</p>
+          </div>
+
+          <div class="receipt-actions">
+            <button type="button" id="printReceiptBtn" class="btn btn-primary btn-receipt">
+              <i class="fas fa-print"></i> Print Receipt
+            </button>
+            <button type="button" id="downloadReceiptBtn" class="btn btn-outline-dark btn-receipt">
+              <i class="fas fa-download"></i> Save as Image
+            </button>
+            <button type="button" id="registerAnotherBtn" class="btn btn-outline-dark btn-receipt">
+              <i class="fas fa-user-plus"></i> Register Another Person
+            </button>
+          </div>
+        </div>
+
+        <!-- ===== PAYMENT PANEL (shown only for paid event days) ===== -->
+        <div id="paymentPanel" class="payment-panel hidden">
+          <div class="payment-header">
+            <i class="fas fa-receipt"></i>
+            <h3>Almost There — Complete Your Payment</h3>
+            <p>Your spot is reserved once payment is confirmed.</p>
+          </div>
+
+          <div class="payment-amount">
+            <span class="payment-amount-label">Amount Due</span>
+            <span class="payment-amount-value">₦5,000</span>
+          </div>
+
+          <div class="payment-details">
+            <h4><i class="fas fa-university"></i> Bank Transfer Details</h4>
+            <div class="payment-row">
+              <span class="payment-label">Account Name</span>
+              <span class="payment-value">Impact Makers Creativity Services Co</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Account Number</span>
+              <span class="payment-value payment-acct" id="acctNumberDisplay">0131301273</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Bank</span>
+              <span class="payment-value">GTBank</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Payment Reference</span>
+              <span class="payment-value payment-ref" id="paymentRef">—</span>
+            </div>
+          </div>
+
+          <div class="payment-instructions">
+            <h5><i class="fas fa-info-circle"></i> Next Steps</h5>
+            <ol>
+              <li>Transfer <strong>₦5,000</strong> to the GTBank account above.</li>
+              <li>Use your <strong>Receipt Number (<span id="paymentRefNotice">—</span>)</strong> as the payment description / narration.</li>
+              <li>Send your proof of payment on WhatsApp to <a href="https://wa.me/2348035690386" target="_blank" rel="noopener">0803 569 0386</a>.</li>
+              <li>You will receive a confirmation message once verified.</li>
+            </ol>
+          </div>
+
+          <div class="payment-actions">
+            <button type="button" id="copyAcctBtn" class="btn btn-primary btn-receipt">
+              <i class="fas fa-copy"></i> Copy Account Number
+            </button>
+            <a href="https://wa.me/2348035690386" id="whatsappProofBtn" target="_blank" rel="noopener" class="btn btn-whatsapp btn-receipt">
+              <i class="fab fa-whatsapp"></i> Send Proof on WhatsApp
+            </a>
+          </div>
+
+          <p class="payment-note">
+            <i class="fas fa-shield-alt"></i> This is the only official account for AGIS 2026 payments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Accelerate Global Impact Summit. All Rights Reserved.</p>
+      <p class="footer-theme">
+        Theme: <strong>FRESH OIL</strong> — For Innovative Thinking
+      </p>
+      <p class="footer-tagline">
+        Christ • Character • Competence • Capacity — The next generation starts with us.
+      </p>
+      <div class="footer-partners">
+        <span>Powered by CCYI Global &amp; Access Chapel</span>
+        <img src="assets/agis-logo.png" alt="Accelerate Global Impact Summit 2026" class="footer-logo">
+      </div>
+      <p class="footer-credit">
+        Designed and deployed by <strong>CCYI Global Enterprise (R)</strong> &nbsp;•&nbsp;
+        <a href="tel:+2348149537021">0814 953 7021</a>
+      </p>
+    </div>
+  </footer>
+
+  <button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
