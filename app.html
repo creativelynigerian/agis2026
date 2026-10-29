@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AGIS 2026 — Payment &amp; Event Companion</title>
+  <meta name="description" content="Accelerate Global Impact Summit 2026 Companion PWA: Online Payments, Digital QR Tickets, GradReady Venue Radar &amp; Live Location Tracking.">
+  
+  <!-- PWA Manifest & Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4a1a6b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AGIS 2026">
+  <link rel="apple-touch-icon" href="assets/agis-logo.png">
+  <link rel="icon" type="image/png" href="assets/agis-logo.png">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <!-- ===== TOP HEADER ===== -->
+  <header class="app-header">
+    <div class="top-announcement">
+      <div>
+        <i class="fas fa-fire-alt"></i> <strong>AGIS 2026: FRESH OIL</strong> &bull; 27–28 Nov 2026 &bull; Access Chapel Auditorium
+      </div>
+      <div>
+        <a href="index.html" title="Back to Main Website"><i class="fas fa-globe"></i> Main Website</a>
+      </div>
+    </div>
+
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <div class="brand-logo">
+          <img src="assets/agis-logo.png" alt="AGIS 2026 Logo">
+        </div>
+        <div class="brand-info">
+          <h1>AGIS 2026 <span class="theme-badge">FRESH OIL</span></h1>
+          <p>Payment &amp; Event Companion</p>
+        </div>
+      </div>
+
+      <div class="header-status-pills">
+        <span id="networkPill" class="status-pill pill-online" title="Network Connection Status">
+          <span class="pulse-dot"></span> Online
+        </span>
+        <span id="gpsPill" class="status-pill pill-gps-idle" title="Location Tracking Status">
+          <i class="fas fa-location-arrow"></i> GPS Idle
+        </span>
+        <button id="pwaInstallBtn" class="status-pill pill-gps-active hidden" title="Install App to Home Screen">
+          <i class="fas fa-download"></i> Install App
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Top Navigation Tabs -->
+    <nav class="desktop-nav">
+      <div class="desktop-nav-container">
+        <button class="nav-tab-btn active" data-target="tab-register">
+          <i class="fas fa-ticket-alt"></i> Register &amp; Pay
+        </button>
+        <button class="nav-tab-btn" data-target="tab-tickets">
+          <i class="fas fa-qrcode"></i> Digital Tickets
+        </button>
+        <button class="nav-tab-btn" data-target="tab-tracker">
+          <i class="fas fa-map-marked-alt"></i> GradReady Radar &amp; Venue
+        </button>
+        <button class="nav-tab-btn" data-target="tab-sponsors">
+          <i class="fas fa-handshake"></i> Sponsors &amp; Partners
+        </button>
+        <button class="nav-tab-btn" data-target="tab-admin">
+          <i class="fas fa-user-shield"></i> Coordinator Admin
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN APP PANES ===== -->
+  <main class="app-main">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: REGISTRATION & PAYMENTS -->
+    <!-- ========================================== -->
+    <section id="tab-register" class="tab-pane active">
+      <div class="hero-card">
+        <div class="hero-meta">
+          <span class="hero-tag gold"><i class="fas fa-certificate"></i> Official Pass</span>
+          <span class="hero-tag"><i class="fas fa-calendar-alt"></i> 27th–28th November 2026</span>
+          <span class="hero-tag"><i class="fas fa-shield-alt"></i> Verified Instant QR</span>
+        </div>
+        <h2 class="hero-title">Accelerate Global Impact Summit 2026</h2>
+        <p class="hero-desc">
+          Join thousands of youth, tech innovators, student leaders, and kingdom pioneers.
+          Register your attendance, pay securely via Paystack with Nigerian cards/transfers, and receive your verified QR Pass instantly.
+        </p>
+        <div class="hero-stats-row">
+          <div class="hero-stat-box">
+            <div class="hero-stat-label">Summit Venue</div>
+            <div class="hero-stat-val">Access Chapel</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-label">Tech Summit Fee</div>
+            <div class="hero-stat-val" id="statTechFee">₦5,000</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-label">Saturday Pass</div>
+            <div class="hero-stat-val">FREE</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-label">Verified Tickets Issued</div>
+            <div class="hero-stat-val" id="statTicketsIssued">148</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Category Switcher -->
+      <div class="category-pill-selector">
+        <button class="cat-pill-btn active" data-cat="individual">
+          <i class="fas fa-user"></i> Individual Attendee
+        </button>
+        <button class="cat-pill-btn" data-cat="school">
+          <i class="fas fa-graduation-cap"></i> School / Delegation
+        </button>
+        <button class="cat-pill-btn" data-cat="volunteer">
+          <i class="fas fa-hands-helping"></i> Event Volunteer
+        </button>
+        <button class="cat-pill-btn" data-cat="sponsor">
+          <i class="fas fa-gem"></i> Sponsor &amp; Exhibitor
+        </button>
+      </div>
+
+      <!-- FORM 1: INDIVIDUAL REGISTRATION -->
+      <div id="form-cat-individual" class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title"><i class="fas fa-user-check text-gold"></i> Individual Registration</h3>
+            <p class="card-subtitle">Choose your summit experience and register in less than 2 minutes</p>
+          </div>
+          <span class="hero-tag gold">Personal Pass</span>
+        </div>
+
+        <form id="individualRegForm">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" id="indivName" class="form-control" placeholder="e.g. Oluwaseun Adeleke" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="indivEmail" class="form-control" placeholder="name@domain.com" required>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">WhatsApp / Phone Number <span class="req">*</span></label>
+              <input type="tel" id="indivPhone" class="form-control" placeholder="0801 234 5678" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organization / Church / School</label>
+              <input type="text" id="indivOrg" class="form-control" placeholder="e.g. Access Chapel / Tech Hub">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Pass Tier <span class="req">*</span></label>
+            <div class="tier-grid">
+              <div class="tier-card selected" data-tier="friday_tech" data-price="5000">
+                <div class="tier-card-title">Friday Tech Summit Pass</div>
+                <div class="tier-card-price" id="tierPrice-friday_tech">₦5,000</div>
+                <div class="tier-card-desc">Full access to Friday Masterclasses, AI &amp; Tech Workshops, Innovation Challenge &amp; Certificate.</div>
+              </div>
+              <div class="tier-card" data-tier="both_days" data-price="5000">
+                <div class="tier-card-title">Both Days All-Access Pass</div>
+                <div class="tier-card-price" id="tierPrice-both_days">₦5,000</div>
+                <div class="tier-card-desc">Friday Tech Summit Masterclass + Complimentary Saturday Grand Leadership Summit entry.</div>
+              </div>
+              <div class="tier-card" data-tier="saturday_free" data-price="0">
+                <div class="tier-card-title">Saturday Grand Summit Pass</div>
+                <div class="tier-card-price">FREE</div>
+                <div class="tier-card-desc">Complimentary admission to Saturday Keynotes, Praise &amp; Worship, and Youth Empowerment Rally.</div>
+              </div>
+              <div class="tier-card" data-tier="vip_executive" data-price="25000">
+                <div class="tier-card-title">VIP Executive Pass</div>
+                <div class="tier-card-price" id="tierPrice-vip_executive">₦25,000</div>
+                <div class="tier-card-desc">VIP front-row seating, Speaker Lounge access, Summit commemorative gift pack &amp; executive networking lunch.</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-lock"></i> Proceed to Secure Checkout (<span id="indivTotalAmount">₦5,000</span>)
+          </button>
+        </form>
+      </div>
+
+      <!-- FORM 2: SCHOOL & STUDENT DELEGATION -->
+      <div id="form-cat-school" class="card hidden">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title"><i class="fas fa-graduation-cap text-gold"></i> School &amp; Student Delegation</h3>
+            <p class="card-subtitle">Register secondary schools, universities, coding clubs, or student delegations</p>
+          </div>
+          <span class="hero-tag gold">Group Delegation</span>
+        </div>
+
+        <form id="schoolRegForm">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">School / Institution Name <span class="req">*</span></label>
+              <input type="text" id="schoolName" class="form-control" placeholder="e.g. Bells Secondary School, Ota" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Institution Category <span class="req">*</span></label>
+              <select id="schoolType" class="form-control">
+                <option value="Senior Secondary School">Senior Secondary School</option>
+                <option value="Junior Secondary School">Junior Secondary School</option>
+                <option value="University / Tertiary">University / Tertiary</option>
+                <option value="Coding / Robotics Academy">Coding / Robotics Academy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Lead Teacher / Chaperone Name <span class="req">*</span></label>
+              <input type="text" id="teacherName" class="form-control" placeholder="Mr. / Mrs. Lead Coordinator" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teacher WhatsApp / Phone <span class="req">*</span></label>
+              <input type="tel" id="teacherPhone" class="form-control" placeholder="0802 345 6789" required>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Teacher Email Address <span class="req">*</span></label>
+              <input type="email" id="teacherEmail" class="form-control" placeholder="teacher@school.edu.ng" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Number of Student Delegates (₦3,000 / student) <span class="req">*</span></label>
+              <input type="number" id="studentCount" class="form-control" min="1" max="50" value="5" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Delegation Package</label>
+            <div class="tier-grid">
+              <div class="tier-card selected" data-tier="school_delegation" data-price="15000">
+                <div class="tier-card-title">School Delegation Pack (5 Students + 1 Chaperone Free)</div>
+                <div class="tier-card-price" id="tierPrice-school_delegation">₦15,000</div>
+                <div class="tier-card-desc">Includes AGIS Tech Challenge entry, Hackathon participation, Summit delegate badges, and group certificate.</div>
+              </div>
+              <div class="tier-card" data-tier="single_student" data-price="3000">
+                <div class="tier-card-title">Individual Student Competitor Pass</div>
+                <div class="tier-card-price" id="tierPrice-single_student">₦3,000</div>
+                <div class="tier-card-desc">Single student ticket for the Friday School Tech Competition &amp; Innovation Exhibition.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Student Names / Roll (comma-separated or notes)</label>
+            <textarea id="studentRoster" class="form-control" rows="2" placeholder="e.g. David Eze, Grace Okon, Samuel Adeleke, Mariam Bello, Praise John"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-users"></i> Register School Delegation (<span id="schoolTotalAmount">₦15,000</span>)
+          </button>
+        </form>
+      </div>
+
+      <!-- FORM 3: SUMMIT VOLUNTEER -->
+      <div id="form-cat-volunteer" class="card hidden">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title"><i class="fas fa-hands-helping text-gold"></i> Volunteer &amp; Event Staff</h3>
+            <p class="card-subtitle">Serve at AGIS 2026 across Media, Technical, Ushering, and Logistics</p>
+          </div>
+          <span class="hero-tag gold">Complimentary Pass</span>
+        </div>
+
+        <form id="volunteerRegForm">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" id="volName" class="form-control" placeholder="Your Full Name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="volEmail" class="form-control" placeholder="volunteer@domain.com" required>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Phone / WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="volPhone" class="form-control" placeholder="0803 123 4567" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Department / Unit of Service <span class="req">*</span></label>
+              <select id="volDept" class="form-control">
+                <option value="Ushering & Protocol">Ushering &amp; Protocol</option>
+                <option value="Technical & Sound/AV">Technical &amp; Sound/AV</option>
+                <option value="Media & Photography">Media &amp; Photography</option>
+                <option value="Registration & Check-In">Registration &amp; Check-In</option>
+                <option value="Logistics & Security">Logistics &amp; Security</option>
+                <option value="Medical & First Aid">Medical &amp; First Aid</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Prior Experience or Special Skills</label>
+            <textarea id="volNotes" class="form-control" rows="2" placeholder="Tell us any relevant experience in events, cameras, streaming, crowd coordination..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-accent btn-block">
+            <i class="fas fa-id-badge"></i> Submit Volunteer Registration (FREE Pass)
+          </button>
+        </form>
+      </div>
+
+      <!-- FORM 4: SPONSOR & EXHIBITOR -->
+      <div id="form-cat-sponsor" class="card hidden">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title"><i class="fas fa-gem text-gold"></i> Sponsor &amp; Exhibitor Partnership</h3>
+            <p class="card-subtitle">Position your brand before 2,000+ ambitious young leaders and tech innovators</p>
+          </div>
+          <span class="hero-tag gold">Corporate Partner</span>
+        </div>
+
+        <form id="sponsorRegForm">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Company / Brand Name <span class="req">*</span></label>
+              <input type="text" id="sponsCompany" class="form-control" placeholder="e.g. Apex Tech Solutions Ltd" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contact Person Name <span class="req">*</span></label>
+              <input type="text" id="sponsName" class="form-control" placeholder="e.g. Chief Executive / Brand Lead" required>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Official Email <span class="req">*</span></label>
+              <input type="email" id="sponsEmail" class="form-control" placeholder="sponsor@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Official Phone <span class="req">*</span></label>
+              <input type="tel" id="sponsPhone" class="form-control" placeholder="0805 123 4567" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Sponsorship Tier <span class="req">*</span></label>
+            <div class="tier-grid">
+              <div class="tier-card selected" data-tier="sponsor_bronze" data-price="50000">
+                <div class="tier-card-title">Bronze Summit Sponsor</div>
+                <div class="tier-card-price" id="tierPrice-sponsor_bronze">₦50,000</div>
+                <div class="tier-card-desc">Brand logo on summit banners, digital program mention &amp; 2 VIP executive passes.</div>
+              </div>
+              <div class="tier-card" data-tier="tech_booth" data-price="50000">
+                <div class="tier-card-title">Tech Exhibition Booth</div>
+                <div class="tier-card-price" id="tierPrice-tech_booth">₦50,000</div>
+                <div class="tier-card-desc">Dedicated indoor booth table at the AGIS Tech Challenge hall to showcase products &amp; services.</div>
+              </div>
+              <div class="tier-card" data-tier="sponsor_silver" data-price="150000">
+                <div class="tier-card-title">Silver Summit Sponsor</div>
+                <div class="tier-card-price" id="tierPrice-sponsor_silver">₦150,000</div>
+                <div class="tier-card-desc">Prominent logo on main stage screens, 1-minute video spot, booth space &amp; 4 VIP passes.</div>
+              </div>
+              <div class="tier-card" data-tier="sponsor_gold" data-price="300000">
+                <div class="tier-card-title">Gold Summit Sponsor</div>
+                <div class="tier-card-price" id="tierPrice-sponsor_gold">₦300,000</div>
+                <div class="tier-card-desc">Keynote speaking segment, premium booth, lead sponsor branding &amp; 8 VIP passes.</div>
+              </div>
+              <div class="tier-card" data-tier="sponsor_platinum" data-price="1000000">
+                <div class="tier-card-title">Platinum Summit Partner</div>
+                <div class="tier-card-price" id="tierPrice-sponsor_platinum">₦1,000,000</div>
+                <div class="tier-card-desc">Headline partnership with CCYI Global, executive dinner with keynote speakers &amp; permanent media recognition.</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-handshake"></i> Complete Sponsorship Booking (<span id="sponsTotalAmount">₦50,000</span>)
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: DIGITAL TICKETS & WALLET -->
+    <!-- ========================================== -->
+    <section id="tab-tickets" class="tab-pane">
+      <!-- Search or Retrieve Pass -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title"><i class="fas fa-wallet text-gold"></i> Digital Pass &amp; Ticket Wallet</h3>
+            <p class="card-subtitle">Search or verify your AGIS 2026 digital QR ticket</p>
+          </div>
+          <button id="lookupTicketBtn" class="btn btn-outline btn-sm">
+            <i class="fas fa-search"></i> Find My Ticket
+          </button>
+        </div>
+
+        <div id="ticketLookupBox" class="form-row two-col hidden">
+          <div class="form-group">
+            <input type="text" id="lookupQuery" class="form-control" placeholder="Enter Ticket ID, Phone or Email...">
+          </div>
+          <div class="form-group">
+            <button id="executeLookupBtn" class="btn btn-primary btn-block">
+              <i class="fas fa-search"></i> Search Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Ticket Container -->
+      <div id="ticketDisplayContainer">
+        <!-- Ticket Rendered Here via JS -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: GRADREADY TRACKER & VENUE RADAR -->
+    <!-- ========================================== -->
+    <section id="tab-tracker" class="tab-pane">
+      <!-- Venue Info Card -->
+      <div class="venue-hero">
+        <div class="venue-header-row">
+          <div>
+            <h2 class="venue-title"><i class="fas fa-map-marker-alt text-gold"></i> Access Chapel Auditorium</h2>
+            <p class="venue-subtitle">Ogun State, Nigeria &bull; Coordinates: 6.6853° N, 3.2845° E</p>
+          </div>
+          <span class="hero-tag gold">Summit Venue</span>
+        </div>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">
+          The official venue for Accelerate Global Impact Summit 2026. Secure parking, tech exhibition halls, air-conditioned main auditorium, and cafeteria facilities on site.
+        </p>
+        <div class="nav-quick-actions">
+          <a id="gmapsNavBtn" href="https://www.google.com/maps/dir/?api=1&destination=6.6853,3.2845" target="_blank" rel="noopener" class="btn btn-sm btn-accent">
+            <i class="fab fa-google"></i> Google Maps Directions
+          </a>
+          <a id="appleNavBtn" href="https://maps.apple.com/?daddr=6.6853,3.2845" target="_blank" rel="noopener" class="btn btn-sm btn-outline" style="color:#fff; border-color: rgba(255,255,255,0.4);">
+            <i class="fab fa-apple"></i> Apple Maps
+          </a>
+          <button id="simulateVenueLocBtn" class="btn btn-sm btn-outline" style="color:var(--accent-light); border-color: var(--accent);">
+            <i class="fas fa-vial"></i> Test Arrival at Venue
+          </button>
+        </div>
+      </div>
+
+      <!-- Privacy & Consent Box -->
+      <div class="consent-card">
+        <div class="consent-header">
+          <i class="fas fa-user-shield"></i>
+          <div>
+            <h3>GradReady-Style Live Location Sharing &amp; Consent</h3>
+            <span style="font-size: 0.72rem; color: #855700;">Zero spam &bull; Strict encryption &bull; Participant-controlled</span>
+          </div>
+        </div>
+        <p class="consent-text">
+          GradReady live tracking allows authorized AGIS 2026 event coordinators to monitor the arrival of consenting student delegations, school buses, and volunteers for safety, logistics, and one-tap GPS check-in. Tracking operates strictly with your explicit consent and can be stopped at any time.
+        </p>
+        <div class="consent-switch-wrapper">
+          <div>
+            <strong style="font-size: 0.86rem; color: #351a02;">Share My Live Location</strong>
+            <p style="font-size: 0.72rem; color: #705436;" id="trackingConsentStatus">Status: Inactive &bull; Tap toggle to share</p>
+          </div>
+          <button id="toggleTrackingBtn" class="btn btn-sm btn-primary">
+            <i class="fas fa-broadcast-tower"></i> Enable Location
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-time Telemetry Grid -->
+      <div class="telemetry-grid">
+        <div class="telemetry-card">
+          <div class="telemetry-label">Distance to Venue</div>
+          <div class="telemetry-val" id="telemetryDist">Calculating...</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Estimated Drive Time</div>
+          <div class="telemetry-val" id="telemetryEta">--</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">GPS Accuracy</div>
+          <div class="telemetry-val" id="telemetryAcc">--</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Venue Arrival Status</div>
+          <div class="telemetry-val" id="telemetryGeofence">En Route</div>
+        </div>
+      </div>
+
+      <!-- Interactive Map / Radar -->
+      <div class="card p-0">
+        <div class="card-header" style="padding: 14px 16px; margin: 0;">
+          <div>
+            <h3 class="card-title"><i class="fas fa-satellite text-gold"></i> Live GradReady Venue Map &amp; Radar</h3>
+            <p class="card-subtitle">Real-time venue perimeter, entrance gates, and consenting attendee telemetry</p>
+          </div>
+          <button id="recenterMapBtn" class="btn btn-sm btn-outline">
+            <i class="fas fa-crosshairs"></i> Recenter
+          </button>
+        </div>
+
+        <div class="map-container">
+          <div id="leafletMap"></div>
+          <!-- Fallback Radar Vector view if Leaflet isn't loaded -->
+          <div id="radarFallback" class="radar-canvas-view hidden">
+            <div class="radar-sweep-circle">
+              <div class="radar-sweep-hand"></div>
+              <div class="radar-pin radar-pin-venue" title="Access Chapel Auditorium">
+                <div class="radar-pin-icon"><i class="fas fa-church"></i></div>
+                <div class="radar-pin-label">AGIS Venue</div>
+              </div>
+              <div id="radarUserPin" class="radar-pin radar-pin-user" title="Your GPS Location">
+                <div class="radar-pin-icon"><i class="fas fa-user-circle"></i></div>
+                <div class="radar-pin-label">You (En Route)</div>
+              </div>
+            </div>
+            <div style="position: absolute; bottom: 12px; color: #fff; font-size: 0.75rem;">
+              <i class="fas fa-info-circle text-gold"></i> Interactive Vector Radar Active
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GPS Arrival Geofence Check-in Trigger -->
+      <div id="geofenceCard" class="geofence-arrival-card">
+        <i class="fas fa-map-pin" style="font-size: 1.8rem; color: var(--accent-dark);"></i>
+        <div>
+          <h4 style="font-size: 1rem; color: var(--primary-dark);">Venue Geofence Proximity Check</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted);" id="geofenceNoticeText">
+            Once you arrive within 500 meters of Access Chapel Auditorium, one-tap GPS check-in will be automatically unlocked!
+          </p>
+        </div>
+        <button id="triggerGpsCheckinBtn" class="btn btn-primary" disabled>
+          <i class="fas fa-check-circle"></i> GPS Arrival Check-In (Within 500m)
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: SPONSORS & PARTNERS -->
+    <!-- ========================================== -->
+    <section id="tab-sponsors" class="tab-pane">
+      <div class="hero-card">
+        <div class="hero-meta">
+          <span class="hero-tag gold"><i class="fas fa-star"></i> Partnership</span>
+          <span class="hero-tag">Reach 2,000+ Young Leaders</span>
+        </div>
+        <h2 class="hero-title">Partner with AGIS 2026</h2>
+        <p class="hero-desc">
+          Empower the next generation of Nigerian tech leaders, entrepreneurs, and creatives.
+          Book your exhibition booth or choose a strategic sponsorship tier powered by CCYI Global Enterprise.
+        </p>
+      </div>
+
+      <div class="tier-grid">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-gold"><i class="fas fa-medal"></i> Platinum Partner</h4>
+            <span class="hero-tag gold">₦1,000,000</span>
+          </div>
+          <p class="card-subtitle mb-3">The ultimate branding &amp; thought leadership partnership package.</p>
+          <ul style="font-size: 0.84rem; line-height: 1.6; margin-bottom: 16px; color: var(--text-main);">
+            <li><i class="fas fa-check text-gold"></i> Headline summit naming recognition</li>
+            <li><i class="fas fa-check text-gold"></i> 10-minute keynote presentation slot</li>
+            <li><i class="fas fa-check text-gold"></i> Double premium exhibition booth</li>
+            <li><i class="fas fa-check text-gold"></i> 10 VIP Executive tickets &amp; banquet passes</li>
+          </ul>
+          <button class="btn btn-primary btn-block select-sponsor-tier-btn" data-tier="sponsor_platinum" data-price="1000000">
+            Select Platinum Tier
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-gold"><i class="fas fa-award"></i> Gold Sponsor</h4>
+            <span class="hero-tag gold">₦300,000</span>
+          </div>
+          <p class="card-subtitle mb-3">High-impact brand awareness across youth and technology masterclasses.</p>
+          <ul style="font-size: 0.84rem; line-height: 1.6; margin-bottom: 16px; color: var(--text-main);">
+            <li><i class="fas fa-check text-gold"></i> Keynote speaking segment</li>
+            <li><i class="fas fa-check text-gold"></i> Full indoor exhibition booth</li>
+            <li><i class="fas fa-check text-gold"></i> Logo on stage screens &amp; live stream</li>
+            <li><i class="fas fa-check text-gold"></i> 8 VIP Executive passes</li>
+          </ul>
+          <button class="btn btn-primary btn-block select-sponsor-tier-btn" data-tier="sponsor_gold" data-price="300000">
+            Select Gold Tier
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-gold"><i class="fas fa-store"></i> Tech Exhibition Booth</h4>
+            <span class="hero-tag gold">₦50,000</span>
+          </div>
+          <p class="card-subtitle mb-3">Showcase your startup, coding academy, or product directly to attendees.</p>
+          <ul style="font-size: 0.84rem; line-height: 1.6; margin-bottom: 16px; color: var(--text-main);">
+            <li><i class="fas fa-check text-gold"></i> Dedicated table &amp; banner space in Tech Hall</li>
+            <li><i class="fas fa-check text-gold"></i> Power socket &amp; Wi-Fi access</li>
+            <li><i class="fas fa-check text-gold"></i> Inclusion in official summit exhibitor directory</li>
+            <li><i class="fas fa-check text-gold"></i> 2 Exhibitor representative passes</li>
+          </ul>
+          <button class="btn btn-accent btn-block select-sponsor-tier-btn" data-tier="tech_booth" data-price="50000">
+            Book Exhibition Booth
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-gold"><i class="fas fa-shield-alt"></i> Bronze Sponsor</h4>
+            <span class="hero-tag gold">₦50,000</span>
+          </div>
+          <p class="card-subtitle mb-3">Support youth participation scholarships and student awards.</p>
+          <ul style="font-size: 0.84rem; line-height: 1.6; margin-bottom: 16px; color: var(--text-main);">
+            <li><i class="fas fa-check text-gold"></i> Brand logo on official program &amp; banner</li>
+            <li><i class="fas fa-check text-gold"></i> Mention on summit social channels</li>
+            <li><i class="fas fa-check text-gold"></i> 2 VIP passes for your company representatives</li>
+          </ul>
+          <button class="btn btn-primary btn-block select-sponsor-tier-btn" data-tier="sponsor_bronze" data-price="50000">
+            Select Bronze Tier
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: COORDINATOR & ADMIN PORTAL -->
+    <!-- ========================================== -->
+    <section id="tab-admin" class="tab-pane">
+      <!-- Admin Lock State -->
+      <div id="adminLockState" class="card admin-lock-screen">
+        <div class="admin-lock-icon">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <h3 class="card-title text-center" style="justify-content: center; margin-bottom: 6px;">Event Coordinator Portal</h3>
+        <p class="card-subtitle text-center mb-3">Enter coordinator PIN or master password to access analytics, QR scanner, and fee configuration.</p>
+        
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <input type="password" id="adminPinInput" class="form-control text-center" placeholder="Enter PIN (Default: 1234 or agis2026admin)" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-unlock"></i> Unlock Coordinator Dashboard
+          </button>
+          <div class="mt-2 text-center" style="font-size: 0.75rem; color: var(--text-muted);">
+            Authorized access only for CCYI Global Enterprise &amp; Access Chapel leadership.
+          </div>
+        </form>
+      </div>
+
+      <!-- Admin Dashboard State -->
+      <div id="adminDashboardState" class="hidden">
+        <!-- Top Toolbar -->
+        <div class="card-header" style="background:#fff; padding: 14px 18px; border-radius: var(--radius-md); margin-bottom: 16px;">
+          <div>
+            <h2 class="card-title"><i class="fas fa-tachometer-alt text-gold"></i> AGIS 2026 Command Center</h2>
+            <p class="card-subtitle">Real-time attendance, revenue ledger, and live participant radar</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="seedDemoDataBtn" class="btn btn-sm btn-outline" title="Populate realistic test attendees &amp; schools">
+              <i class="fas fa-magic"></i> Seed Demo Data
+            </button>
+            <button id="adminLogoutBtn" class="btn btn-sm btn-outline" title="Lock Portal">
+              <i class="fas fa-lock"></i> Lock
+            </button>
+          </div>
+        </div>
+
+        <!-- Metrics KPI Grid -->
+        <div class="admin-stats-grid">
+          <div class="stat-metric-card">
+            <span class="stat-metric-label">Total Revenue</span>
+            <span class="stat-metric-num" id="kpiRevenue">₦0</span>
+            <span class="stat-metric-meta"><i class="fas fa-coins"></i> Verified Paystack + Transfers</span>
+          </div>
+          <div class="stat-metric-card">
+            <span class="stat-metric-label">Total Registrations</span>
+            <span class="stat-metric-num" id="kpiTotalRegs">0</span>
+            <span class="stat-metric-meta" id="kpiPaidRatio">0 Paid &bull; 0 Free</span>
+          </div>
+          <div class="stat-metric-card">
+            <span class="stat-metric-label">Day 1 Check-Ins (27 Nov)</span>
+            <span class="stat-metric-num" id="kpiDay1">0</span>
+            <span class="stat-metric-meta"><i class="fas fa-laptop-code"></i> Friday Tech Summit</span>
+          </div>
+          <div class="stat-metric-card">
+            <span class="stat-metric-label">Day 2 Check-Ins (28 Nov)</span>
+            <span class="stat-metric-num" id="kpiDay2">0</span>
+            <span class="stat-metric-meta"><i class="fas fa-church"></i> Saturday Grand Summit</span>
+          </div>
+          <div class="stat-metric-card">
+            <span class="stat-metric-label">Live Tracked (GradReady)</span>
+            <span class="stat-metric-num" id="kpiLiveTracked">0</span>
+            <span class="stat-metric-meta"><i class="fas fa-satellite"></i> Active consenting users</span>
+          </div>
+        </div>
+
+        <!-- Coordinator Live Map View -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title"><i class="fas fa-radar text-gold"></i> Coordinator Live Participant Radar</h3>
+              <p class="card-subtitle">Real-time positions of consenting school buses, student delegates, and volunteers</p>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <select id="coordinatorFilter" class="form-control" style="padding: 4px 8px; font-size: 0.78rem;">
+                <option value="all">Show All Categories</option>
+                <option value="school">School Delegations Only</option>
+                <option value="volunteer">Volunteers Only</option>
+                <option value="individual">Attendees Only</option>
+              </select>
+            </div>
+          </div>
+          <div class="map-container" style="height: 320px;">
+            <div id="coordinatorMap"></div>
+            <div id="coordinatorRadarFallback" class="radar-canvas-view hidden">
+              <div class="radar-sweep-circle">
+                <div class="radar-sweep-hand"></div>
+                <div class="radar-pin radar-pin-venue">
+                  <div class="radar-pin-icon"><i class="fas fa-church"></i></div>
+                  <div class="radar-pin-label">Access Chapel</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance Scanner Tool -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title"><i class="fas fa-camera text-gold"></i> Live Entrance QR Scanner</h3>
+              <p class="card-subtitle">Scan attendee tickets at the gate for Day 1 and Day 2 accreditation</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <select id="scanDaySelector" class="form-control" style="padding: 4px 8px; font-size: 0.78rem;">
+                <option value="day1">Day 1: Friday 27th Nov</option>
+                <option value="day2">Day 2: Saturday 28th Nov</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="scanner-container">
+            <video id="scannerVideo" playsinline></video>
+            <div class="scanner-overlay">
+              <div class="scanner-reticle">
+                <div class="scanner-laser"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 14px;">
+            <button id="startScanBtn" class="btn btn-sm btn-primary">
+              <i class="fas fa-video"></i> Start Camera Scanner
+            </button>
+            <button id="stopScanBtn" class="btn btn-sm btn-outline hidden">
+              <i class="fas fa-stop"></i> Stop Camera
+            </button>
+            <label class="btn btn-sm btn-outline" style="margin: 0; cursor: pointer;">
+              <i class="fas fa-upload"></i> Scan QR Image File
+              <input type="file" id="scanFileInput" accept="image/*" class="hidden">
+            </label>
+          </div>
+
+          <!-- Scanner Feedback Alert -->
+          <div id="scannerFeedback" class="card hidden" style="border: 2px solid var(--accent); padding: 14px; text-align: center;">
+            <!-- Feedback content populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Registrations & Financial Table -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title"><i class="fas fa-list text-gold"></i> Registrations &amp; Payment Ledger</h3>
+              <p class="card-subtitle">Manage attendees, schools, and sponsorship transactions</p>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button id="exportCsvBtn" class="btn btn-sm btn-accent">
+                <i class="fas fa-file-csv"></i> Export CCYI Report (CSV)
+              </button>
+            </div>
+          </div>
+
+          <div class="form-row two-col mb-3">
+            <div class="form-group">
+              <input type="text" id="adminTableSearch" class="form-control" placeholder="Search by name, email, phone, school, or Ticket ID...">
+            </div>
+            <div class="form-group">
+              <select id="adminTableFilter" class="form-control">
+                <option value="all">All Statuses &amp; Categories</option>
+                <option value="PAID">Paid / Verified Only</option>
+                <option value="PENDING">Pending Bank Transfer</option>
+                <option value="FREE">Free Passes Only</option>
+                <option value="school">School Delegations Only</option>
+                <option value="sponsor">Sponsors &amp; Exhibitors</option>
+                <option value="volunteer">Volunteers</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Ticket / Ref</th>
+                  <th>Attendee / School</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Payment Status</th>
+                  <th>Check-In (D1/D2)</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody">
+                <!-- Dynamically filled -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Configurable Fees & Event Settings -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title"><i class="fas fa-sliders-h text-gold"></i> Configurable Fees &amp; Gateway Settings</h3>
+              <p class="card-subtitle">Update registration prices and merchant credentials without touching code</p>
+            </div>
+            <button id="saveSettingsBtn" class="btn btn-sm btn-primary">
+              <i class="fas fa-save"></i> Save Settings
+            </button>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Friday Tech Summit Fee (₦)</label>
+              <input type="number" id="settingFeeTech" class="form-control" value="5000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">School Delegation Pack (₦)</label>
+              <input type="number" id="settingFeeDelegation" class="form-control" value="15000">
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Single Student Competitor Fee (₦)</label>
+              <input type="number" id="settingFeeStudent" class="form-control" value="3000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">VIP Executive Pass (₦)</label>
+              <input type="number" id="settingFeeVip" class="form-control" value="25000">
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Tech Exhibition Booth (₦)</label>
+              <input type="number" id="settingFeeBooth" class="form-control" value="50000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bronze Sponsor (₦)</label>
+              <input type="number" id="settingFeeBronze" class="form-control" value="50000">
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Paystack Public Key (pk_live_... or pk_test_...)</label>
+              <input type="text" id="settingPaystackKey" class="form-control" value="pk_test_sample_agis2026_key">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Venue Arrival Radius (Meters)</label>
+              <input type="number" id="settingGeofenceRadius" class="form-control" value="500">
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label class="form-label">Official GTBank Account for Transfers</label>
+              <input type="text" id="settingBankAcct" class="form-control" value="0131301273 - Impact Makers Creativity Services Co">
+            </div>
+            <div class="form-group">
+              <label class="form-label">WhatsApp Proof Phone</label>
+              <input type="text" id="settingWaPhone" class="form-control" value="2348035690386">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== MOBILE BOTTOM STICKY TAB BAR ===== -->
+  <nav class="mobile-tab-bar">
+    <button class="tab-btn active" data-target="tab-register">
+      <i class="fas fa-ticket-alt"></i>
+      <span>Register</span>
+    </button>
+    <button class="tab-btn" data-target="tab-tickets">
+      <i class="fas fa-qrcode"></i>
+      <span>Tickets</span>
+      <span id="mobileTicketBadge" class="tab-badge hidden">0</span>
+    </button>
+    <button class="tab-btn" data-target="tab-tracker">
+      <i class="fas fa-location-arrow"></i>
+      <span>Radar</span>
+    </button>
+    <button class="tab-btn" data-target="tab-sponsors">
+      <i class="fas fa-gem"></i>
+      <span>Sponsors</span>
+    </button>
+    <button class="tab-btn" data-target="tab-admin">
+      <i class="fas fa-shield-alt"></i>
+      <span>Admin</span>
+    </button>
+  </nav>
+
+  <!-- ===== PAYMENT CHECKOUT MODAL ===== -->
+  <div id="paymentModal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="paymentModalTitle">Checkout &bull; AGIS 2026 Pass</h3>
+        <button id="closePaymentModal" style="color:#fff; font-size:1.2rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: var(--surface-alt); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px;">
+            <span>Category:</span>
+            <strong id="modalSummaryCat">Friday Tech Summit Pass</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px;">
+            <span>Attendee / Group:</span>
+            <strong id="modalSummaryName">--</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 1.15rem; color: var(--primary-dark); font-weight: 800; border-top: 1px dashed #d0c4db; padding-top: 8px; margin-top: 8px;">
+            <span>Total Due:</span>
+            <span id="modalSummaryAmount" class="text-gold">₦5,000</span>
+          </div>
+        </div>
+
+        <!-- Payment Method Tabs -->
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+          <button id="btnPayMethodPaystack" class="btn btn-sm btn-primary" style="flex: 1;">
+            <i class="fas fa-credit-card"></i> Paystack Instant
+          </button>
+          <button id="btnPayMethodTransfer" class="btn btn-sm btn-outline" style="flex: 1;">
+            <i class="fas fa-university"></i> Bank Transfer
+          </button>
+        </div>
+
+        <!-- METHOD 1: PAYSTACK -->
+        <div id="methodPaystackContent">
+          <div style="background: #fdfaf3; border: 1px solid #eed69b; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 14px; font-size: 0.8rem; color: #4a2800;">
+            <i class="fas fa-shield-alt text-gold"></i> <strong>Paystack Secure Gateway:</strong> Pay with Nigerian debit/credit cards (Mastercard, Visa, Verve), direct bank transfer, or USSD (*737#, *966#). Your digital QR ticket is issued immediately upon confirmation!
+          </div>
+
+          <div class="form-group mb-3">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.84rem; cursor: pointer;">
+              <input type="checkbox" id="paystackDemoModeCheckbox" checked>
+              <span><strong>Instant Test Mode</strong> (Simulate successful Paystack payment for instant pass)</span>
+            </label>
+          </div>
+
+          <button id="payWithPaystackBtn" class="btn btn-primary btn-block">
+            <i class="fas fa-lock"></i> Pay Now via Paystack (<span id="paystackBtnAmount">₦5,000</span>)
+          </button>
+        </div>
+
+        <!-- METHOD 2: DIRECT BANK TRANSFER -->
+        <div id="methodTransferContent" class="hidden">
+          <div style="background: var(--surface-alt); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 14px;">
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 2px;">Bank Name</div>
+            <div style="font-weight: 700; color: var(--primary-dark); margin-bottom: 8px;">Guaranty Trust Bank (GTBank)</div>
+
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 2px;">Account Name</div>
+            <div style="font-weight: 700; color: var(--primary-dark); margin-bottom: 8px;">Impact Makers Creativity Services Co</div>
+
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 2px;">Account Number</div>
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 8px 12px; border-radius: 6px; border: 1px solid #dcd3e4;">
+              <strong style="font-size: 1.15rem; letter-spacing: 0.05em; color: var(--primary-dark);" id="modalAcctNum">0131301273</strong>
+              <button id="copyModalAcctBtn" class="btn btn-sm btn-outline"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px; margin-bottom: 2px;">Narration / Reference Code</div>
+            <div style="background: #fff; padding: 6px 10px; border-radius: 6px; font-family: monospace; font-weight: 700; color: var(--accent-dark);" id="modalTransferRef">
+              AGIS26-REF-0000
+            </div>
+          </div>
+
+          <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px;">
+            After making the transfer, click below to send your receipt on WhatsApp to <strong>0803 569 0386</strong>. Your ticket status will be marked as "Pending Verification" until confirmed by the finance coordinator.
+          </p>
+
+          <div style="display: flex; gap: 8px; flex-direction: column;">
+            <a id="modalWhatsAppProofBtn" href="#" target="_blank" rel="noopener" class="btn btn-accent btn-block">
+              <i class="fab fa-whatsapp"></i> Send Proof on WhatsApp
+            </a>
+            <button id="confirmTransferRecordedBtn" class="btn btn-outline btn-block">
+              <i class="fas fa-check"></i> I Have Made the Transfer
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ALERTS CONTAINER ===== -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Paystack Inline Popup JS -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  
+  <!-- HTML5 QR Code Scanner -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

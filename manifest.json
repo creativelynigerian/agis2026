@@ -1,0 +1,47 @@
+{
+  "name": "AGIS 2026 — Payment & Event Companion",
+  "short_name": "AGIS 2026",
+  "description": "Accelerate Global Impact Summit 2026: Online Payments, Digital QR Tickets, GradReady Venue Radar & Live Event Tracking.",
+  "start_url": "./app.html",
+  "display": "standalone",
+  "background_color": "#2d0f42",
+  "theme_color": "#4a1a6b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/agis-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/agis-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["events", "finance", "travel"],
+  "shortcuts": [
+    {
+      "name": "Register & Pay",
+      "url": "./app.html#register",
+      "description": "Register and pay for AGIS 2026"
+    },
+    {
+      "name": "My Tickets",
+      "url": "./app.html#tickets",
+      "description": "View scannable digital passes"
+    },
+    {
+      "name": "GradReady Radar",
+      "url": "./app.html#tracker",
+      "description": "Venue navigation and live tracking"
+    },
+    {
+      "name": "Admin Portal",
+      "url": "./app.html#admin",
+      "description": "Organizer coordinator command center"
+    }
+  ]
+}
