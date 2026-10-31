@@ -757,20 +757,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .minister-photo.photo-kay-daniels {
-  object-position: 45% 20%;
-  transform: scale(1.15);
+  object-position: center 18%;
 }
 
 .minister-photo.photo-kayode {
-  object-position: center 20%;
+  object-position: center 15%;
 }
 
 .minister-photo.photo-kenny {
-  object-position: center 20%;
-}
-
-.minister-photo.photo-amodu {
-  object-position: center 20%;
+  object-position: center 15%;
 }
 
 .minister-card h3 {
